@@ -1,59 +1,16 @@
-<?php include ("includes/header.php");?>
-<?php
-    $tableauProduits = [
-        ['name' => "Bonnet en laine", 
-            'prix' => 10,
-            'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur repudiandae, amet similique aliquid reiciendis fugiat soluta deserunt dolorum quam dolores inventore. Doloremque ab rem ipsa ad delectus dignissimos impedit eaque.'
-        ],
-        ['name' => "Bonnet en laine bio",
-            'prix' => 14,
-            'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur repudiandae, amet similique aliquid reiciendis fugiat soluta deserunt dolorum quam dolores inventore. Doloremque ab rem ipsa ad delectus dignissimos impedit eaque.'
-        ],
-        ['name' => "Bonnet en laine et en cachemire",
-            'prix' => 20,
-            'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur repudiandae, amet similique aliquid reiciendis fugiat soluta deserunt dolorum quam dolores inventore. Doloremque ab rem ipsa ad delectus dignissimos impedit eaque.'
-        ],
-        ['name' => "Bonnet arc-en-ciel",
-            'prix' => 12,
-            'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur repudiandae, amet similique aliquid reiciendis fugiat soluta deserunt dolorum quam dolores inventore. Doloremque ab rem ipsa ad delectus dignissimos impedit eaque.'
-        ],
-    ];
-    ?>
-    <table>
-        <?php function prixHT($prixTTC){
-            $prixHT = $prixTTC/1.2;
-            $prixHT = number_format ($prixHT, 2);
-            return $prixHT;
-        }
+<?php include_once ("includes/header.php");
+for ($i=0; $i<3; $i++){
 
-        ?>
-        <?php function Afficher($produits){
-            ?>
-            <tr>
-            <td>
-                
-                <?php echo $produits['name'];?>
-            </td>
-            <td <?php if($produits['prix']<= 12) echo "class = 'green'"; else echo "class = 'blue'"; ?>>
-            <?php echo $produits['prix'];?>€
-            </td>
-            <td>
-                
-                <?php echo prixHT($produits['prix']);?>€
-            </td>
-            <td>
-                
-                <?php echo $produits['description'];?>
-            </td>
-        </tr>
-        <?php
-    }
     ?>
-        <?php
-        foreach ($tableauProduits as $produits) {
-            Afficher($produits);
-        }
-            ?>
-            
-    </table>
+    <div class="card" style="width: 18rem;">
+  <img src=<?php echo $tableauProduits[$i]['pathImg']?> class="card-img-top" alt=<?php echo $tableauProduits[$i]['name']?>>
+  <div class="card-body">
+    <h5 class="card-title"> <?php echo $tableauProduits[$i]['name']?></h5>
+    <p class="card-text"><?php echo $tableauProduits[$i]['description']?></p>
+    <a href="list.php" class="btn btn-primary">Voir tous les produits</a>
+  </div>
+</div>
+<?php
+}
+?>
 <?php include ("includes/footer.php");?>
