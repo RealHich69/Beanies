@@ -1,3 +1,11 @@
+<?php
+session_start();
+?>
+<?php if(isset($_POST['login'])){
+    
+    $_SESSION['login'] = $_POST['login'];
+}
+?>
 <?php require_once ("variable.php");
 require_once ("function.php");?>
 <!DOCTYPE html>
@@ -12,4 +20,36 @@ require_once ("function.php");?>
    <title>Document</title>
 </head>
 <body>  
-    <h1>Liste de Bonnets</h1>
+    
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="list.php">Produits</a>
+        </li>
+      </ul>
+    </div>
+</div>
+<?php if(isset($_SESSION['login'])){
+    
+    echo $_SESSION ['login'];
+}
+?>
+<a href="logout.php">nice</a>
+<button class="btn btn-outline-success me-2" type="button">
+   <a href="login.php">Login</a></button>
+</nav>
+<nav class="navbar navbar-light bg-light">
+  <form class="container-fluid justify-content-start">
+  </form>
+</nav>
+    </header>

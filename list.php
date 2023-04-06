@@ -1,4 +1,5 @@
 <?php include ("includes/header.php");?>
+<h1>Liste de Bonnets</h1>
 <table>
         
         
