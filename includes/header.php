@@ -7,7 +7,11 @@ session_start();
 }
 ?>
 <?php require_once ("variable.php");
-require_once ("function.php");?>
+require_once ("function.php");
+if (isset($pageTitle)){
+  $pageTitle = 'Bienvenue !';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +35,13 @@ require_once ("function.php");?>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="?page=home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="list.php">Produits</a>
+          <a class="nav-link" href="?page=list">Produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="?page=cart">Panier</a>
         </li>
       </ul>
     </div>
@@ -44,9 +51,9 @@ require_once ("function.php");?>
     echo $_SESSION ['login'];
 }
 ?>
-<a href="logout.php">nice</a>
+<a href="?page=logout">Deconnexion</a>
 <button class="btn btn-outline-success me-2" type="button">
-   <a href="login.php">Login</a></button>
+   <a href="?page=login">Login</a></button>
 </nav>
 <nav class="navbar navbar-light bg-light">
   <form class="container-fluid justify-content-start">

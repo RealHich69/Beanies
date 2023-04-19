@@ -2,28 +2,28 @@
 ?>
 <?php var_dump($_POST)?>
 <?php
-// Define the expected password value
+
 $expected_password = 'toto';
 
-// Get the submitted password value from the form
+
 $password = $_POST['password'];
 
-// Compare the submitted password with the expected password
+
 if ($password== $expected_password) {
-    // The password is correct
+    
     echo "Password is correct!";
 } else {
-    // The password is incorrect
+   
     echo "Password is incorrect!";
 }
 ?>
 <?php
-  // Get the login value from the form
+  
   $login = $_POST['login'];
 
-  // Check if the login value exists and is not empty
+  
   if (isset($login) && !empty($login)) {
-    // Login is not empty
+    
     echo "Login value is valid";
   } else {
     
@@ -50,4 +50,3 @@ if ($password== $expected_password) {
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-<?php include_once ("includes/footer.php");?>
