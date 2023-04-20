@@ -6,6 +6,7 @@ $pages = [
     'login'=> 'Connexion',
     'cart'=> 'Panier',
     'logout'=> '',
+    'formulaire'=> 'Contact',
 ];
 
 $page = 'home';

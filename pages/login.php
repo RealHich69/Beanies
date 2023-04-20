@@ -22,7 +22,7 @@ if ($password== $expected_password) {
   $login = $_POST['login'];
 
   
-  if (isset($login) && !empty($login)) {
+  if (($login) && !empty($login)) {
     
     echo "Login value is valid";
   } else {

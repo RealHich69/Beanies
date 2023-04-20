@@ -43,6 +43,9 @@ if (isset($pageTitle)){
         <li class="nav-item">
           <a class="nav-link" href="?page=cart">Panier</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="?page=formulaire">Nous Contacter</a>
+        </li>
       </ul>
     </div>
 </div>
