@@ -22,6 +22,7 @@
 
 <?php
 
+$contact = new Contact($_POST);
 
 if(!empty($_POST)) {
   
