@@ -1,11 +1,37 @@
 <?php
 class Beanie
 {
+	const SIZE_S = 'S';
+	const SIZE_M = 'M';
+	const SIZE_L = 'L';
+	const SIZE_XL = 'XL';
+	const SIZES = [
+		Beanie::SIZE_S,
+		Beanie::SIZE_M,
+		Beanie::SIZE_L,
+		Beanie::SIZE_XL,
+	];
+	
+	const MATERIAL_LAINE = 'laine';
+	const MATERIAL_SOIE = 'soie';
+	const MATERIAL_COTON = 'coton';
+	const MATERIAL_CACHEMIRE = 'cachemire';
+	const MATERIALS = [
+		Beanie::MATERIAL_CACHEMIRE,
+		Beanie::MATERIAL_COTON,
+		Beanie::MATERIAL_LAINE,
+		Beanie::MATERIAL_SOIE,
+	];
+
+
     protected ?int $id;
     protected ?string $name;
     protected ?string $description;
     protected float $price = 0.0;
     protected ?string $image;
+	protected array $sizes = [];
+	protected array $materials = [];
+
 	public function getId(): ?int {
 		return $this->id;
 	}
@@ -45,50 +71,37 @@ class Beanie
 		return $this;
 	}
 	
-		const SIZE_S = 'S';
-		const SIZE_M = 'M';
-		const SIZE_L = 'L';
-		const SIZE_XL = 'XL';
+
+	/**
+	 * @return array
+	 */
+	public function getSizes(): array {
+		return $this->sizes;
+	}
 	
-		
-		const MATERIAL_LAINE = 'laine';
-		const MATERIAL_SOIE = 'soie';
-		const MATERIAL_COTON = 'coton';
-		const MATERIAL_CACHEMIRE = 'cachemire';
+	/**
+	 * @param array $sizes 
+	 * @return self
+	 */
+	public function setSizes(array $sizes): self {
+		$this->sizes = $sizes;
+		return $this;
+	}
 
-		const MIN_PRICE = 0;
-    	const MAX_PRICE = 100;
-		protected $data = [
-			// Ajoutez ici les données de vos bonnets avec les tailles, les matières et les prix
-			// par exemple:
-			[
-				'name' => 'Bonnet en laine',
-				'size' => [self::SIZE_S, self::SIZE_M],
-				'material' => [self::MATERIAL_LAINE],
-				'price' => 10
-			],
-			[
-				'name' => 'Bonnet en soie',
-				'size' => [self::SIZE_M, self::SIZE_L],
-				'material' => [self::MATERIAL_SOIE],
-				'price' => 14
-			],
-			[
-				'name' => 'Bonnet en soie et cachemire M',
-				'size' => [self::SIZE_M, self::SIZE_L],
-				'material' => [self::MATERIAL_SOIE, self::MATERIAL_CACHEMIRE],
-				'price' => 20
-			],
-			[
-				'name' => 'Bonnet en laine et soie M',
-				'size' => [self::SIZE_M, self::SIZE_L],
-				'material' => [self::MATERIAL_LAINE, self::MATERIAL_CACHEMIRE],
-				'price' => 12
-			],
-			
-			
-			
-		];
+	/**
+	 * @return array
+	 */
+	public function getMaterials(): array {
+		return $this->materials;
+	}
+	
+	/**
+	 * @param array $materials 
+	 * @return self
+	 */
+	public function setMaterials(array $materials): self {
+		$this->materials = $materials;
+		return $this;
+	}
 }
-
-
+?>

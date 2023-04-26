@@ -51,14 +51,14 @@ $total = 0.0;
 
 foreach ($panier as $id => $quantite) {
     $produit= $tableauProduits[$id];
-    $prix = $produit['prix']* $quantite;
+    $prix = $produit->getPrice()* $quantite;
     $total += $prix;
     ?>
     <tr>
         <td><?= $id ?></td>
-        <td><?= $produit['name'] ?></td>
+        <td><?= $produit->getName() ?></td>
         <td>
-        <?= $produit['prix'] ?>€<td>
+        <?= $produit->getPrice() ?>€<td>
         <a href="?page=cart&id=<?= $id;?>">+</a>
             <?= $quantite ?>
         <a href="?page=cart&id=<?= $id;?>&mode=min">-</a></td>

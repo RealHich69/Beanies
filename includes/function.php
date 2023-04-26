@@ -4,21 +4,21 @@
     <tr>
         <td>
 
-            <?php echo $produits['name']; ?>
+            <?php echo $produits->getName(); ?>
         </td>
-        <td <?php if ($produits['prix'] <= 12)
+        <td <?php if ($produits->getPrice() <= 12)
             echo "class = 'green'";
         else
             echo "class = 'blue'"; ?>>
-            <?php echo $produits['prix']; ?>€
+            <?php echo $produits->getPrice(); ?>€
         </td>
         <td>
 
-            <?php echo prixHT($produits['prix']); ?>€
+            <?php echo prixHT($produits->getPrice()); ?>€
         </td>
         <td>
 
-            <?php echo $produits['description']; ?>
+            <?php echo $produits->getDescription(); ?>
         </td>
         <td>
             <a href="?page=cart&id=<?php echo $id; ?>">Ajouter au panier</a>

@@ -1,6 +1,53 @@
-<?php 
+<?php
 $pageTitle = 'Tous nos bonnets';
+if (!empty($_POST['size'])){
+    var_dump($_POST);
+
+    $tableauProduits = array_filter($tableauProduits, function(Beanie $beanie){
+        
+        if(in_array($_POST['size'], $beanie->getSizes())) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    
+}
+if (!empty($_POST['material'])){
+    var_dump($_POST);
+    $tableauProduits = array_filter($tableauProduits, function(Beanie $beanie){
+        if(in_array($_POST['material'], $beanie->getMaterials())){
+            return true;
+        } else {
+            return false;
+        }
+        
+    });
+}
+
+
 ?>
+<form action="" method="post">
+    <select name="size" id="size">
+        <option value="">Choissisez votre taille</option>
+        <?php foreach (Beanie::SIZES as $size){
+            echo '<option value="'.$size.'">'.$size.'</option>';
+        }
+        ?>
+    </select>
+    <button type="submit">Validez</button>
+</form>
+<table>
+<form action="" method="post">
+    <select name="material" id="material">
+        <option value="">Choissisez votre matière de bonnet</option>
+        <?php foreach (Beanie::MATERIALS as $material){
+            echo '<option value="'.$material.'">'.$material.'</option>';
+        }
+        ?>
+    </select>
+    <button type="submit">Validez</button>
+</form>
 <table>
         
         
@@ -10,35 +57,6 @@ $pageTitle = 'Tous nos bonnets';
         }
             ?>
             
-   <!-- Formulaire pour les filtres -->
-<form method="post" action="list.php">
-    <label for="size">Taille :</label>
-    <select name="size" id="size">
-        <option value="">Toutes les tailles</option>
-        <?php foreach (Beanie::AVAILABLE_SIZES as $sizeOption) { ?>
-            <option value="<?php echo $sizeOption; ?>" <?php if ($size == $sizeOption) echo 'selected'; ?>><?php echo $sizeOption; ?></option>
-        <?php } ?>
-    </select>
-    <br>
-    <label for="material">Matière :</label>
-    <select name="material" id="material">
-        <option value="">Toutes les matières</option>
-        <?php foreach (Beanie::AVAILABLE_MATERIALS as $materialOption) { ?>
-            <option value="<?php echo $materialOption; ?>" <?php if ($material == $materialOption) echo 'selected'; ?>><?php echo $materialOption; ?></option>
-        <?php } ?>
-    </select>
-    <br>
-    <label for="minPrice">Prix minimum :</label>
-    <input type="number" name="minPrice" id="minPrice" value="<?php echo $minPrice; ?>" min="<?php echo Beanie::MIN_PRICE; ?>" max="<?php echo Beanie::MAX_PRICE; ?>">
-    <br>
-    <label for="maxPrice">Prix maximum :</label>
-    <input type="number" name="maxPrice" id="maxPrice" value="<?php echo $maxPrice; ?>" min="<?php echo Beanie::MIN_PRICE; ?>" max="<?php echo Beanie::MAX_PRICE; ?>">
-    <br>
-    <input type="submit" value="Filtrer">
-</form>
-
-<!-- Affichage de la liste des produits filtrés -->
-<!-- Implémentez ici la logique pour récupérer les valeurs des filtres depuis le formulaire, appeler la méthode de filtrage de la classe Beanie et afficher les produits filtrés -->
-
+   
 
 
